@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Playwright temporary runs and report
+playwright-report/
+test-results/*
+!test-results/evidence/
+test-results/evidence/.last-run.json
+
+# OS
+.DS_Store
+Thumbs.db
