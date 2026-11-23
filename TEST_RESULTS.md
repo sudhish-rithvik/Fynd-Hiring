@@ -1,5 +1,6 @@
-# Test Results — Mini Checkout
+# Test Results — Mini Checkout and Browser Test Suite
 
+- Application: CHECK (Fast, simple and secure checkout)
 - Date of Execution: 2026-11-22
 - Target URL: http://localhost:5173
 

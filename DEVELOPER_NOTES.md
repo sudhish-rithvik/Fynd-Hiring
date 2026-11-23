@@ -1,4 +1,4 @@
-# Developer Notes
+# Developer Notes — Mini Checkout and Browser Test Suite (CHECK)
 
 This document covers the reasoning behind implementation decisions, how edge cases are handled, and talking points for a code walkthrough.
 

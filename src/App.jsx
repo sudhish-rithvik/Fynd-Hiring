@@ -112,9 +112,12 @@ export default function App() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold tracking-tight text-gray-900">
-            Mini Checkout
-          </h1>
+          <div>
+            <h1 className="text-xl font-bold tracking-tight text-gray-900">
+              CHECK
+            </h1>
+            <p className="text-xs text-gray-500">Fast, simple and secure checkout</p>
+          </div>
           <span className="text-sm text-gray-500 flex items-center gap-1.5">
             <svg
               className="w-4 h-4"

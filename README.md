@@ -1,6 +1,8 @@
-# Mini Checkout
+# Mini Checkout and Browser Test Suite
 
-A simple single-page checkout flow built with React, Vite, and Tailwind CSS. The app includes a product list, cart adjustments, basic form validation, and duplicate order prevention, tested with Playwright.
+**CHECK** — *Fast, simple and secure checkout*
+
+A single-page checkout flow built with React, Vite, and Tailwind CSS. The app includes a product list, cart adjustments, basic form validation, and duplicate order prevention, tested with Playwright.
 
 ## Features
 

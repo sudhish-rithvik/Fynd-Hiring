@@ -1,6 +1,6 @@
-# Test Plan — Mini Checkout
+# Test Plan — Mini Checkout and Browser Test Suite
 
-This plan outlines the testing approach for the single-page checkout flow. It covers functional checks, monetary calculations, validation rules, and duplicate submission prevention.
+This plan outlines the testing approach for the CHECK single-page checkout flow. It covers functional checks, monetary calculations, validation rules, and duplicate submission prevention.
 
 ## Scope
 
