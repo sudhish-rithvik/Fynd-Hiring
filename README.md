@@ -1,100 +1,97 @@
 # Mini Checkout
 
-A single-page checkout interface built for an engineering hiring assignment. The app simulates an ecommerce checkout flow with a shopping cart, customer validation, order placement, and automated end-to-end tests using Playwright.
+A simple single-page checkout flow built with React, Vite, and Tailwind CSS. The app includes a product list, cart adjustments, basic form validation, and duplicate order prevention, tested with Playwright.
 
 ## Features
 
-- **Product Catalogue**: Two synthetic items (Wireless Mouse at ₹799, Mechanical Keyboard at ₹1,499).
-- **Shopping Cart**: Add products, adjust quantities (stepper guarded against values <= 0), remove items, and view line-item totals.
-- **Derived Order Total**: Totals are calculated on the fly in integer paise to avoid JavaScript floating-point errors.
-- **Form Validation**: Requires non-whitespace customer name and at least one cart item before placing an order. Validation errors clear once corrected.
-- **Duplicate Order Protection**: Uses a synchronous `useRef` lock on submission to prevent multiple orders if the place order button is clicked repeatedly before React re-renders.
-- **Order Confirmation**: Displays order reference number, customer name, purchased items summary, and final total.
+- Product catalogue with two items: Wireless Mouse (Rs 799) and Mechanical Keyboard (Rs 1,499).
+- Cart interactions: add to cart, increase/decrease quantities, remove items.
+- Minimum quantity guard (stepper stops at 1; items can be removed via the remove button).
+- Monetary calculations handled in integer paise to avoid JavaScript floating point errors.
+- Name input validation with real-time error clearing when typed.
+- Empty cart check preventing checkout submission.
+- Double-click protection on the checkout button using a synchronous ref lock.
+- Order confirmation view showing order ID, customer name, purchased items, and total.
 
-## Technology Used
+## Tech Stack
 
-- **React 19**: Component state and rendering
-- **Vite 6**: Local development server and production bundler
-- **Tailwind CSS v4**: UI styling and responsive layouts
-- **Playwright**: End-to-end browser automation
+- React 19
+- Vite
+- Tailwind CSS v4
+- Playwright
 
-## Project Structure
+## Project Layout
 
-```
-├── src/
-│   ├── components/
-│   │   ├── ProductCard.jsx       # Catalogue item card
-│   │   ├── CartItem.jsx          # Cart row with stepper and remove button
-│   │   ├── OrderSummary.jsx      # Summary list and calculated total
-│   │   ├── CheckoutForm.jsx      # Customer details and submission
-│   │   └── OrderConfirmation.jsx # Post-purchase confirmation screen
-│   ├── data/
-│   │   └── products.js           # Catalogue data with integer paise pricing
-│   ├── utils/
-│   │   └── money.js              # Currency formatting helper
-│   ├── App.jsx                   # Main layout and cart/order state
-│   ├── index.css                 # Tailwind stylesheet
-│   └── main.jsx                  # React DOM entry point
-├── tests/
-│   ├── checkout.spec.js          # Core checkout flow tests (TC-01, TC-02, TC-03)
-│   └── smoke.spec.js             # Basic app load test
-├── test-results/
-│   └── evidence/                 # Screenshots from automated and manual runs
-├── playwright.config.js          # Playwright runner and dev server settings
-├── TEST_PLAN.md                  # Test scenarios and QA strategy
-├── TEST_RESULTS.md               # Actual execution logs and findings
-└── DEVELOPER_NOTES.md            # Technical decisions and review notes
+```text
+src/
+  components/
+    ProductCard.jsx        # Product listing item
+    CartItem.jsx           # Cart entry with stepper controls
+    OrderSummary.jsx       # Order items and calculated total
+    CheckoutForm.jsx       # Name input and checkout action
+    OrderConfirmation.jsx  # Success screen with receipt details
+  data/
+    products.js            # Product catalogue list
+  utils/
+    money.js               # Paise to rupees display formatter
+  App.jsx                  # Main page and state handler
+  main.jsx                 # Entry point
+tests/
+  checkout.spec.js         # Playwright end-to-end checkout tests
+  smoke.spec.js            # Initial page load smoke test
+test-results/
+  evidence/                # Test screenshots
 ```
 
-## Installation
+## Setup and Running
 
-Ensure Node.js (v18+) is installed.
+### Prerequisites
+
+Node.js v18 or later.
+
+### Install dependencies
 
 ```bash
-git clone <repo-url>
-cd "Fynd Hiring"
 npm install
 npx playwright install chromium
 ```
 
-## Running Locally
-
-Start the Vite development server:
+### Start dev server
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
+The app will run locally at `http://localhost:5173`.
 
-To generate a production build:
+### Build for production
 
 ```bash
 npm run build
 ```
 
-## Running Browser Tests
+## Running Tests
 
-Run all Playwright tests (Playwright automatically launches the local dev server if it is not already running):
+Run all Playwright tests in headless mode (auto-starts the Vite dev server):
 
 ```bash
 npm test
 ```
 
-To run tests in interactive UI mode:
+Run tests with Playwright UI:
 
 ```bash
 npm run test:ui
 ```
 
-To view the generated HTML report:
+View the latest HTML test report:
 
 ```bash
 npm run test:report
 ```
 
-## Known Limitations
+## Notes & Limitations
 
-- **Client-only State**: The cart and placed orders are stored in React component memory; refreshing the page resets the app.
-- **Simulated Checkout**: No external payment gateway, authentication, or persistent backend database is integrated.
-- **Fixed Catalogue**: The catalogue is static and limited to the two specified hardware products.
+- State is kept in React component memory. Refreshing the browser resets the cart and form.
+- No real payment gateway or backend API is attached; submission is handled entirely client-side.
+- Order reference numbers are generated randomly in the frontend for demo purposes.
